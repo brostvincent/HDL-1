@@ -1,0 +1,53 @@
+09:16:28 INFO  : Processing command line option -hwspec /home/raph/TP_ZED/ZedBoardTangoGateway/ZedBoardTangoGateway.sdk/system_wrapper.hdf.
+09:16:31 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.1/scripts/xsdb/xsdb/xsdb-server.tcl 2450
+09:16:33 INFO  : XSDB server has started successfully.
+09:16:54 INFO  : Saving repository preferences.
+09:16:54 INFO  : Reading in cores from local repositories: 
+		 /home/raph/TP_ZED/hdl/library
+09:16:54 INFO  : Cleaning BSP projects in the workspace.
+09:17:43 INFO  : Saving repository preferences.
+09:17:44 INFO  : Saving repository preferences.
+09:17:57 INFO  : Saving repository preferences.
+09:17:57 INFO  : Reading in cores from local repositories: 
+		 /home/raph/TP_ZED/device-tree-xlnx
+09:17:57 INFO  : Cleaning BSP projects in the workspace.
+09:17:58 INFO  : Saving repository preferences.
+09:18:16 INFO  : 'device_tree' is a board support package for an OS for which applications cannot be developed within SDK.
+09:18:16 INFO  : You can configure and build project 'mydevice_tree' within SDK at will, but have to export it into the appropriate third party environment to develop applications.
+09:18:19 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+09:18:19 INFO  : BSP Project P/mydevice_tree has been successfully migrated.
+09:18:53 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+12:25:58 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+12:26:00 INFO  : XSDB server has started successfully.
+12:26:00 INFO  : Restoring local repository preferences: 
+		 /home/raph/TP_ZED/device-tree-xlnx
+12:26:04 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+12:26:04 INFO  : BSP Project P/mydevice_tree has been successfully migrated.
+14:43:09 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+14:43:10 INFO  : Restoring local repository preferences: 
+		 /home/raph/TP_ZED/device-tree-xlnx
+14:43:10 INFO  : XSDB server has started successfully.
+14:43:14 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+14:43:14 INFO  : BSP Project P/mydevice_tree has been successfully migrated.
+15:23:01 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+15:41:07 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+15:53:44 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+15:56:57 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+00:41:48 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+00:41:49 INFO  : XSDB server has started successfully.
+00:41:50 INFO  : Restoring local repository preferences: 
+		 /home/raph/TP_ZED/device-tree-xlnx
+00:41:56 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+00:41:56 INFO  : BSP Project P/mydevice_tree has been successfully migrated.
+00:42:54 WARN  :  ps7_ethernet_0: No reset found
+ ps7_usb_0: No reset found
+00:59:36 INFO  : No changes in MSS file content so not generating sources.

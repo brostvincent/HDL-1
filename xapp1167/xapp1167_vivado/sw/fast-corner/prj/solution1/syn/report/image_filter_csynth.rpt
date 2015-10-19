@@ -1,0 +1,251 @@
+
+
+================================================================
+== Vivado HLS Report for 'image_filter'
+================================================================
+* Date:           Fri Sep 11 21:51:02 2015
+
+* Version:        2015.2 (Build 1266856 on Fri Jun 26 16:57:37 PM 2015)
+* Project:        prj
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   6.67|      8.10|        0.83|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+---------+-----+---------+----------+
+    |    Latency    |    Interval   | Pipeline |
+    | min |   max   | min |   max   |   Type   |
+    +-----+---------+-----+---------+----------+
+    |  332|  2125737|  291|  2125726| dataflow |
+    +-----+---------+-----+---------+----------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------------------------------------------+------------------------------------------+-----+---------+-----+---------+---------+
+        |                                                          |                                          |    Latency    |    Interval   | Pipeline|
+        |                         Instance                         |                  Module                  | min |   max   | min |   max   |   Type  |
+        +----------------------------------------------------------+------------------------------------------+-----+---------+-----+---------+---------+
+        |call_ret_image_filter_Block_Mat_exit1217_proc_fu_348      |image_filter_Block_Mat_exit1217_proc      |    0|        0|    0|        0|   none  |
+        |grp_image_filter_AXIvideo2Mat_fu_264                      |image_filter_AXIvideo2Mat                 |    3|  2077923|    3|  2077923|   none  |
+        |call_ret1_image_filter_Block_Mat_exit121719_proc1_fu_364  |image_filter_Block_Mat_exit121719_proc1   |    0|        0|    0|        0|   none  |
+        |grp_image_filter_Duplicate_1080_1920_32_32_s_fu_333       |image_filter_Duplicate_1080_1920_32_32_s  |    1|  2076841|    1|  2076841|   none  |
+        |call_ret2_image_filter_Block_Mat_exit121721_proc1_fu_370  |image_filter_Block_Mat_exit121721_proc1   |    0|        0|    0|        0|   none  |
+        |grp_image_filter_CvtColor_fu_287                          |image_filter_CvtColor                     |    1|  2083321|    1|  2083321|   none  |
+        |grp_image_filter_FAST_t_opr_fu_248                        |image_filter_FAST_t_opr                   |  165|  2125725|  165|  2125725|   none  |
+        |grp_image_filter_Dilate_0_0_1080_1920_s_fu_256            |image_filter_Dilate_0_0_1080_1920_s       |  290|  2098394|  290|  2098394|   none  |
+        |grp_image_filter_PaintMask_32_0_1080_1920_s_fu_297        |image_filter_PaintMask_32_0_1080_1920_s   |    1|  2077921|    1|  2077921|   none  |
+        |grp_image_filter_Mat2AXIvideo_fu_310                      |image_filter_Mat2AXIvideo                 |    1|  2076841|    1|  2076841|   none  |
+        +----------------------------------------------------------+------------------------------------------+-----+---------+-----+---------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|Expression       |        -|      -|       0|      5|
+|FIFO             |       48|      -|     798|   2766|
+|Instance         |       11|      3|    6649|   6444|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|     20|
+|Register         |        -|      -|      24|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |       59|      3|    7471|   9235|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |       21|      1|       7|     17|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +--------------------------------------------+------------------------------------------+---------+-------+------+------+
+    |                  Instance                  |                  Module                  | BRAM_18K| DSP48E|  FF  |  LUT |
+    +--------------------------------------------+------------------------------------------+---------+-------+------+------+
+    |image_filter_AXIvideo2Mat_U0                |image_filter_AXIvideo2Mat                 |        0|      0|   264|   273|
+    |image_filter_Block_Mat_exit121719_proc1_U0  |image_filter_Block_Mat_exit121719_proc1   |        0|      0|    74|    73|
+    |image_filter_Block_Mat_exit121721_proc1_U0  |image_filter_Block_Mat_exit121721_proc1   |        0|      0|    26|    25|
+    |image_filter_Block_Mat_exit1217_proc_U0     |image_filter_Block_Mat_exit1217_proc      |        0|      0|    26|    25|
+    |image_filter_CvtColor_U0                    |image_filter_CvtColor                     |        0|      3|   139|    95|
+    |image_filter_Dilate_0_0_1080_1920_U0        |image_filter_Dilate_0_0_1080_1920_s       |        3|      0|   464|   553|
+    |image_filter_Duplicate_1080_1920_32_32_U0   |image_filter_Duplicate_1080_1920_32_32_s  |        0|      0|    65|    57|
+    |image_filter_FAST_t_opr_U0                  |image_filter_FAST_t_opr                   |        8|      0|  5463|  5177|
+    |image_filter_Mat2AXIvideo_U0                |image_filter_Mat2AXIvideo                 |        0|      0|    60|    80|
+    |image_filter_PaintMask_32_0_1080_1920_U0    |image_filter_PaintMask_32_0_1080_1920_s   |        0|      0|    68|    86|
+    +--------------------------------------------+------------------------------------------+---------+-------+------+------+
+    |Total                                       |                                          |       11|      3|  6649|  6444|
+    +--------------------------------------------+------------------------------------------+---------+-------+------+------+
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +--------------------------------+---------+-----+-----+-------+-----+---------+
+    |              Name              | BRAM_18K|  FF | LUT | Depth | Bits| Size:D*B|
+    +--------------------------------+---------+-----+-----+-------+-----+---------+
+    |dmask_data_stream_0_V_U         |        0|    5|   20|      1|    8|        8|
+    |gray_cols_V_channel_U           |        0|    5|   24|      2|   12|       24|
+    |gray_data_stream_0_V_U          |        0|    5|   20|      1|    8|        8|
+    |gray_rows_V_channel_U           |        0|    5|   24|      2|   12|       24|
+    |mask_cols_V_channel_U           |        0|    5|   24|      2|   12|       24|
+    |mask_data_stream_0_V_U          |        0|    5|   20|      1|    8|        8|
+    |mask_rows_V_channel_U           |        0|    5|   24|      2|   12|       24|
+    |p_dst_cols_V_channel_U          |        0|    5|   24|      2|   12|       24|
+    |p_dst_data_stream_0_V_U         |        0|    5|   20|      1|    8|        8|
+    |p_dst_data_stream_1_V_U         |        0|    5|   20|      1|    8|        8|
+    |p_dst_data_stream_2_V_U         |        0|    5|   20|      1|    8|        8|
+    |p_dst_rows_V_channel_U          |        0|    5|   24|      2|   12|       24|
+    |p_src_cols_V_2_loc_channel41_U  |        0|    5|   24|      2|   12|       24|
+    |p_src_cols_V_2_loc_channel_U    |        0|    5|   24|      4|   12|       48|
+    |p_src_cols_V_channel39_U        |        0|    5|   24|      1|   12|       12|
+    |p_src_cols_V_channel_U          |        0|    5|   24|      3|   12|       36|
+    |p_src_data_stream_0_V_U         |        0|    5|   20|      1|    8|        8|
+    |p_src_data_stream_1_V_U         |        0|    5|   20|      1|    8|        8|
+    |p_src_data_stream_2_V_U         |        0|    5|   20|      1|    8|        8|
+    |p_src_rows_V_2_loc_channel40_U  |        0|    5|   24|      2|   12|       24|
+    |p_src_rows_V_2_loc_channel_U    |        0|    5|   24|      4|   12|       48|
+    |p_src_rows_V_channel38_U        |        0|    5|   24|      1|   12|       12|
+    |p_src_rows_V_channel_U          |        0|    5|   24|      3|   12|       36|
+    |src0_cols_V_channel_U           |        0|    5|   24|      2|   12|       24|
+    |src0_data_stream_0_V_U          |        0|    5|   20|      1|    8|        8|
+    |src0_data_stream_1_V_U          |        0|    5|   20|      1|    8|        8|
+    |src0_data_stream_2_V_U          |        0|    5|   20|      1|    8|        8|
+    |src0_rows_V_channel_U           |        0|    5|   24|      2|   12|       24|
+    |src1_cols_V_channel_U           |        0|    5|   24|      2|   12|       24|
+    |src1_data_stream_0_V_U          |       16|  216|  698|  20000|    8|   160000|
+    |src1_data_stream_1_V_U          |       16|  216|  698|  20000|    8|   160000|
+    |src1_data_stream_2_V_U          |       16|  216|  698|  20000|    8|   160000|
+    |src1_rows_V_channel_U           |        0|    5|   24|      2|   12|       24|
+    +--------------------------------+---------+-----+-----+-------+-----+---------+
+    |Total                           |       48|  798| 2766|  60052|  336|   480576|
+    +--------------------------------+---------+-----+-----+-------+-----+---------+
+
+    * Expression: 
+    +---------------------------------------------------+----------+-------+---+----+------------+------------+
+    |                   Variable Name                   | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------------------------+----------+-------+---+----+------------+------------+
+    |image_filter_CvtColor_U0_ap_start                  |    and   |      0|  0|   1|           1|           1|
+    |image_filter_Dilate_0_0_1080_1920_U0_ap_start      |    and   |      0|  0|   1|           1|           1|
+    |image_filter_FAST_t_opr_U0_ap_start                |    and   |      0|  0|   1|           1|           1|
+    |image_filter_Mat2AXIvideo_U0_ap_start              |    and   |      0|  0|   1|           1|           1|
+    |image_filter_PaintMask_32_0_1080_1920_U0_ap_start  |    and   |      0|  0|   1|           1|           1|
+    +---------------------------------------------------+----------+-------+---+----+------------+------------+
+    |Total                                              |          |      0|  0|   5|           5|           5|
+    +---------------------------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------------------------------------------------------------+----+-----------+-----+-----------+
+    |                                     Name                                    | LUT| Input Size| Bits| Total Bits|
+    +-----------------------------------------------------------------------------+----+-----------+-----+-----------+
+    |ap_chn_write_image_filter_Block_Mat_exit121719_proc1_U0_mask_cols_V_channel  |   1|          2|    1|          2|
+    |ap_chn_write_image_filter_Block_Mat_exit121719_proc1_U0_mask_rows_V_channel  |   1|          2|    1|          2|
+    |ap_chn_write_image_filter_Block_Mat_exit121719_proc1_U0_src0_cols_V_channel  |   1|          2|    1|          2|
+    |ap_chn_write_image_filter_Block_Mat_exit121719_proc1_U0_src0_rows_V_channel  |   1|          2|    1|          2|
+    |ap_chn_write_image_filter_Block_Mat_exit121719_proc1_U0_src1_cols_V_channel  |   1|          2|    1|          2|
+    |ap_chn_write_image_filter_Block_Mat_exit121719_proc1_U0_src1_rows_V_channel  |   1|          2|    1|          2|
+    |ap_chn_write_image_filter_Block_Mat_exit121721_proc1_U0_gray_cols_V_channel  |   1|          2|    1|          2|
+    |ap_chn_write_image_filter_Block_Mat_exit121721_proc1_U0_gray_rows_V_channel  |   1|          2|    1|          2|
+    |ap_chn_write_image_filter_Block_Mat_exit1217_proc_U0_p_dst_cols_V_channel    |   1|          2|    1|          2|
+    |ap_chn_write_image_filter_Block_Mat_exit1217_proc_U0_p_dst_rows_V_channel    |   1|          2|    1|          2|
+    |ap_sig_ready_gray_cols_V_channel_full_n                                      |   1|          2|    1|          2|
+    |ap_sig_ready_gray_rows_V_channel_full_n                                      |   1|          2|    1|          2|
+    |ap_sig_ready_mask_cols_V_channel_full_n                                      |   1|          2|    1|          2|
+    |ap_sig_ready_mask_rows_V_channel_full_n                                      |   1|          2|    1|          2|
+    |ap_sig_ready_p_dst_cols_V_channel_full_n                                     |   1|          2|    1|          2|
+    |ap_sig_ready_p_dst_rows_V_channel_full_n                                     |   1|          2|    1|          2|
+    |ap_sig_ready_src0_cols_V_channel_full_n                                      |   1|          2|    1|          2|
+    |ap_sig_ready_src0_rows_V_channel_full_n                                      |   1|          2|    1|          2|
+    |ap_sig_ready_src1_cols_V_channel_full_n                                      |   1|          2|    1|          2|
+    |ap_sig_ready_src1_rows_V_channel_full_n                                      |   1|          2|    1|          2|
+    +-----------------------------------------------------------------------------+----+-----------+-----+-----------+
+    |Total                                                                        |  20|         40|   20|         40|
+    +-----------------------------------------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +------------------------------------------------------------+---+----+-----+-----------+
+    |                            Name                            | FF| LUT| Bits| Const Bits|
+    +------------------------------------------------------------+---+----+-----+-----------+
+    |ap_CS                                                       |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_AXIvideo2Mat_U0                |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_Block_Mat_exit121719_proc1_U0  |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_Block_Mat_exit121721_proc1_U0  |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_Block_Mat_exit1217_proc_U0     |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_CvtColor_U0                    |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_Dilate_0_0_1080_1920_U0        |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_Duplicate_1080_1920_32_32_U0   |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_FAST_t_opr_U0                  |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_Mat2AXIvideo_U0                |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_PaintMask_32_0_1080_1920_U0    |  1|   0|    1|          0|
+    |ap_reg_ready_gray_cols_V_channel_full_n                     |  1|   0|    1|          0|
+    |ap_reg_ready_gray_rows_V_channel_full_n                     |  1|   0|    1|          0|
+    |ap_reg_ready_mask_cols_V_channel_full_n                     |  1|   0|    1|          0|
+    |ap_reg_ready_mask_rows_V_channel_full_n                     |  1|   0|    1|          0|
+    |ap_reg_ready_p_dst_cols_V_channel_full_n                    |  1|   0|    1|          0|
+    |ap_reg_ready_p_dst_rows_V_channel_full_n                    |  1|   0|    1|          0|
+    |ap_reg_ready_src0_cols_V_channel_full_n                     |  1|   0|    1|          0|
+    |ap_reg_ready_src0_rows_V_channel_full_n                     |  1|   0|    1|          0|
+    |ap_reg_ready_src1_cols_V_channel_full_n                     |  1|   0|    1|          0|
+    |ap_reg_ready_src1_rows_V_channel_full_n                     |  1|   0|    1|          0|
+    |image_filter_Block_Mat_exit121719_proc1_U0_ap_start         |  1|   0|    1|          0|
+    |image_filter_Block_Mat_exit121721_proc1_U0_ap_start         |  1|   0|    1|          0|
+    |image_filter_Duplicate_1080_1920_32_32_U0_ap_start          |  1|   0|    1|          0|
+    +------------------------------------------------------------+---+----+-----+-----------+
+    |Total                                                       | 24|   0|   24|          0|
+    +------------------------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------+-----+-----+------------+------------------------+--------------+
+|       RTL Ports      | Dir | Bits|  Protocol  |      Source Object     |    C Type    |
++----------------------+-----+-----+------------+------------------------+--------------+
+|INPUT_STREAM_TDATA    |  in |   32|    axis    |  INPUT_STREAM_V_data_V |    pointer   |
+|INPUT_STREAM_TKEEP    |  in |    4|    axis    |  INPUT_STREAM_V_keep_V |    pointer   |
+|INPUT_STREAM_TSTRB    |  in |    4|    axis    |  INPUT_STREAM_V_strb_V |    pointer   |
+|INPUT_STREAM_TUSER    |  in |    1|    axis    |  INPUT_STREAM_V_user_V |    pointer   |
+|INPUT_STREAM_TLAST    |  in |    1|    axis    |  INPUT_STREAM_V_last_V |    pointer   |
+|INPUT_STREAM_TID      |  in |    1|    axis    |   INPUT_STREAM_V_id_V  |    pointer   |
+|INPUT_STREAM_TDEST    |  in |    1|    axis    |  INPUT_STREAM_V_dest_V |    pointer   |
+|INPUT_STREAM_TVALID   |  in |    1|    axis    |  INPUT_STREAM_V_dest_V |    pointer   |
+|INPUT_STREAM_TREADY   | out |    1|    axis    |  INPUT_STREAM_V_dest_V |    pointer   |
+|OUTPUT_STREAM_TDATA   | out |   32|    axis    | OUTPUT_STREAM_V_data_V |    pointer   |
+|OUTPUT_STREAM_TKEEP   | out |    4|    axis    | OUTPUT_STREAM_V_keep_V |    pointer   |
+|OUTPUT_STREAM_TSTRB   | out |    4|    axis    | OUTPUT_STREAM_V_strb_V |    pointer   |
+|OUTPUT_STREAM_TUSER   | out |    1|    axis    | OUTPUT_STREAM_V_user_V |    pointer   |
+|OUTPUT_STREAM_TLAST   | out |    1|    axis    | OUTPUT_STREAM_V_last_V |    pointer   |
+|OUTPUT_STREAM_TID     | out |    1|    axis    |  OUTPUT_STREAM_V_id_V  |    pointer   |
+|OUTPUT_STREAM_TDEST   | out |    1|    axis    | OUTPUT_STREAM_V_dest_V |    pointer   |
+|OUTPUT_STREAM_TVALID  | out |    1|    axis    | OUTPUT_STREAM_V_dest_V |    pointer   |
+|OUTPUT_STREAM_TREADY  |  in |    1|    axis    | OUTPUT_STREAM_V_dest_V |    pointer   |
+|rows                  |  in |   32|  ap_stable |          rows          |    scalar    |
+|cols                  |  in |   32|  ap_stable |          cols          |    scalar    |
+|ap_clk                |  in |    1| ap_ctrl_hs |      image_filter      | return value |
+|ap_rst_n              |  in |    1| ap_ctrl_hs |      image_filter      | return value |
+|ap_start              |  in |    1| ap_ctrl_hs |      image_filter      | return value |
+|ap_done               | out |    1| ap_ctrl_hs |      image_filter      | return value |
+|ap_idle               | out |    1| ap_ctrl_hs |      image_filter      | return value |
+|ap_ready              | out |    1| ap_ctrl_hs |      image_filter      | return value |
++----------------------+-----+-----+------------+------------------------+--------------+
+

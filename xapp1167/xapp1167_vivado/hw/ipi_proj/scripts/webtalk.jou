@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Webtalk v2015.2.1 (64-bit)
+# SW Build 1302555 on Wed Aug  5 13:06:02 MDT 2015
+# IP Build 1291990 on Mon Jul 27 03:18:52 MDT 2015
+# Start of session at: Fri Oct  2 08:51:05 2015
+# Process ID: 2982
+# Log file: /home/raph/TP_ZED/xapp1167/xapp1167_vivado/hw/ipi_proj/scripts/webtalk.log
+# Journal file: /home/raph/TP_ZED/xapp1167/xapp1167_vivado/hw/ipi_proj/scripts/webtalk.jou
+#-----------------------------------------------------------
+source /home/raph/TP_ZED/xapp1167/xapp1167_vivado/hw/ipi_proj/scripts/project/zc702.hw/webtalk/labtool_webtalk.tcl -notrace
