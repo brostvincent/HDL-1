@@ -10,7 +10,7 @@
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2015.1
+set scripts_vivado_version 2015.3
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -146,80 +146,97 @@ proc create_root_design { parentCell } {
   # Create interface ports
   set DDR [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:ddrx_rtl:1.0 DDR ]
   set FIXED_IO [ create_bd_intf_port -mode Master -vlnv xilinx.com:display_processing_system7:fixedio_rtl:1.0 FIXED_IO ]
-  set IIC [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 IIC ]
   set leds [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 leds ]
   set switches [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 switches ]
 
   # Create ports
-  set i2s_bclk [ create_bd_port -dir O -from 0 -to 0 i2s_bclk ]
-  set i2s_lrclk [ create_bd_port -dir O -from 0 -to 0 i2s_lrclk ]
-  set i2s_mclk [ create_bd_port -dir O -type clk i2s_mclk ]
-  set i2s_sdata_in [ create_bd_port -dir I i2s_sdata_in ]
-  set i2s_sdata_out [ create_bd_port -dir O -from 0 -to 0 i2s_sdata_out ]
 
   # Create instance: axi_cpu_interconnect, and set properties
   set axi_cpu_interconnect [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_cpu_interconnect ]
-  set_property -dict [ list CONFIG.NUM_MI {3}  ] $axi_cpu_interconnect
+  set_property -dict [ list \
+CONFIG.NUM_MI {1} \
+ ] $axi_cpu_interconnect
 
   # Create instance: axi_gpio_0, and set properties
   set axi_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0 ]
-  set_property -dict [ list CONFIG.C_ALL_INPUTS_2 {1} CONFIG.C_ALL_OUTPUTS {1} CONFIG.C_DOUT_DEFAULT {0x000000F0} CONFIG.C_GPIO2_WIDTH {8} CONFIG.C_GPIO_WIDTH {8} CONFIG.C_IS_DUAL {1} CONFIG.GPIO2_BOARD_INTERFACE {sws_8bits} CONFIG.GPIO_BOARD_INTERFACE {leds_8bits}  ] $axi_gpio_0
-
-  # Create instance: axi_i2s_adi, and set properties
-  set axi_i2s_adi [ create_bd_cell -type ip -vlnv analog.com:user:axi_i2s_adi:1.0 axi_i2s_adi ]
-  set_property -dict [ list CONFIG.C_DMA_TYPE {1} CONFIG.C_S_AXI_ADDR_WIDTH {16}  ] $axi_i2s_adi
-
-  # Create instance: axi_iic_0, and set properties
-  set axi_iic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_iic:2.0 axi_iic_0 ]
-
-  # Create instance: sys_audio_clkgen, and set properties
-  set sys_audio_clkgen [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:5.1 sys_audio_clkgen ]
-  set_property -dict [ list CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {12.288} CONFIG.PRIM_IN_FREQ {200.000}  ] $sys_audio_clkgen
+  set_property -dict [ list \
+CONFIG.C_ALL_INPUTS_2 {1} \
+CONFIG.C_ALL_OUTPUTS {1} \
+CONFIG.C_DOUT_DEFAULT {0x00000080} \
+CONFIG.C_GPIO2_WIDTH {8} \
+CONFIG.C_GPIO_WIDTH {8} \
+CONFIG.C_IS_DUAL {1} \
+CONFIG.GPIO2_BOARD_INTERFACE {sws_8bits} \
+CONFIG.GPIO_BOARD_INTERFACE {leds_8bits} \
+ ] $axi_gpio_0
 
   # Create instance: sys_ps7, and set properties
   set sys_ps7 [ create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 sys_ps7 ]
-  set_property -dict [ list CONFIG.PCW_EN_CLK1_PORT {1} CONFIG.PCW_EN_RST1_PORT {1} CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {100.0} CONFIG.PCW_FPGA1_PERIPHERAL_FREQMHZ {200.0} CONFIG.PCW_GPIO_EMIO_GPIO_ENABLE {1} CONFIG.PCW_GPIO_EMIO_GPIO_IO {32} CONFIG.PCW_I2C1_PERIPHERAL_ENABLE {0} CONFIG.PCW_IMPORT_BOARD_PRESET {ZedBoard} CONFIG.PCW_IRQ_F2P_INTR {1} CONFIG.PCW_QSPI_GRP_SINGLE_SS_ENABLE {1} CONFIG.PCW_USE_DMA0 {1} CONFIG.PCW_USE_DMA1 {1} CONFIG.PCW_USE_DMA2 {1} CONFIG.PCW_USE_FABRIC_INTERRUPT {1} CONFIG.PCW_USE_S_AXI_HP0 {0}  ] $sys_ps7
+  set_property -dict [ list \
+CONFIG.PCW_EN_CLK1_PORT {0} \
+CONFIG.PCW_EN_RST1_PORT {0} \
+CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {100.000000} \
+CONFIG.PCW_FPGA1_PERIPHERAL_FREQMHZ {150.000000} \
+CONFIG.PCW_GPIO_EMIO_GPIO_ENABLE {0} \
+CONFIG.PCW_GPIO_EMIO_GPIO_IO {<Select>} \
+CONFIG.PCW_I2C1_PERIPHERAL_ENABLE {0} \
+CONFIG.PCW_IMPORT_BOARD_PRESET {None} \
+CONFIG.PCW_IRQ_F2P_INTR {0} \
+CONFIG.PCW_QSPI_GRP_SINGLE_SS_ENABLE {1} \
+CONFIG.PCW_USE_DMA0 {0} \
+CONFIG.PCW_USE_DMA1 {0} \
+CONFIG.PCW_USE_DMA2 {0} \
+CONFIG.PCW_USE_FABRIC_INTERRUPT {0} \
+CONFIG.PCW_USE_S_AXI_HP0 {0} \
+CONFIG.preset {ZedBoard} \
+ ] $sys_ps7
 
   # Create instance: sys_rstgen, and set properties
   set sys_rstgen [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 sys_rstgen ]
-  set_property -dict [ list CONFIG.C_EXT_RST_WIDTH {1}  ] $sys_rstgen
-
-  # Create instance: xlconcat_0, and set properties
-  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
+  set_property -dict [ list \
+CONFIG.C_EXT_RST_WIDTH {1} \
+ ] $sys_rstgen
 
   # Create interface connections
-  connect_bd_intf_net -intf_net axi_cpu_interconnect_M00_AXI [get_bd_intf_pins axi_cpu_interconnect/M00_AXI] [get_bd_intf_pins axi_iic_0/S_AXI]
-  connect_bd_intf_net -intf_net axi_cpu_interconnect_M01_AXI [get_bd_intf_pins axi_cpu_interconnect/M01_AXI] [get_bd_intf_pins axi_i2s_adi/S_AXI]
-  connect_bd_intf_net -intf_net axi_cpu_interconnect_M02_AXI [get_bd_intf_pins axi_cpu_interconnect/M02_AXI] [get_bd_intf_pins axi_gpio_0/S_AXI]
+  connect_bd_intf_net -intf_net axi_cpu_interconnect_M00_AXI [get_bd_intf_pins axi_cpu_interconnect/M00_AXI] [get_bd_intf_pins axi_gpio_0/S_AXI]
   connect_bd_intf_net -intf_net axi_cpu_interconnect_s00_axi [get_bd_intf_pins axi_cpu_interconnect/S00_AXI] [get_bd_intf_pins sys_ps7/M_AXI_GP0]
   connect_bd_intf_net -intf_net axi_gpio_0_GPIO [get_bd_intf_ports leds] [get_bd_intf_pins axi_gpio_0/GPIO]
   connect_bd_intf_net -intf_net axi_gpio_0_GPIO2 [get_bd_intf_ports switches] [get_bd_intf_pins axi_gpio_0/GPIO2]
-  connect_bd_intf_net -intf_net axi_i2s_adi_dma_ack_rx [get_bd_intf_pins axi_i2s_adi/DMA_ACK_RX] [get_bd_intf_pins sys_ps7/DMA2_ACK]
-  connect_bd_intf_net -intf_net axi_i2s_adi_dma_ack_tx [get_bd_intf_pins axi_i2s_adi/DMA_ACK_TX] [get_bd_intf_pins sys_ps7/DMA1_ACK]
-  connect_bd_intf_net -intf_net axi_i2s_adi_dma_req_rx [get_bd_intf_pins axi_i2s_adi/DMA_REQ_RX] [get_bd_intf_pins sys_ps7/DMA2_REQ]
-  connect_bd_intf_net -intf_net axi_i2s_adi_dma_req_tx [get_bd_intf_pins axi_i2s_adi/DMA_REQ_TX] [get_bd_intf_pins sys_ps7/DMA1_REQ]
-  connect_bd_intf_net -intf_net axi_iic_0_IIC [get_bd_intf_ports IIC] [get_bd_intf_pins axi_iic_0/IIC]
   connect_bd_intf_net -intf_net sys_ps7_ddr [get_bd_intf_ports DDR] [get_bd_intf_pins sys_ps7/DDR]
   connect_bd_intf_net -intf_net sys_ps7_fixed_io [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins sys_ps7/FIXED_IO]
 
   # Create port connections
-  connect_bd_net -net axi_iic_0_gpo [get_bd_pins axi_iic_0/gpo] [get_bd_pins xlconcat_0/In1]
-  connect_bd_net -net i2s_bclk_s [get_bd_ports i2s_bclk] [get_bd_pins axi_i2s_adi/BCLK_O]
-  connect_bd_net -net i2s_lrclk_s [get_bd_ports i2s_lrclk] [get_bd_pins axi_i2s_adi/LRCLK_O]
-  connect_bd_net -net i2s_sdata_in_s [get_bd_ports i2s_sdata_in] [get_bd_pins axi_i2s_adi/SDATA_I]
-  connect_bd_net -net i2s_sdata_out_s [get_bd_ports i2s_sdata_out] [get_bd_pins axi_i2s_adi/SDATA_O]
-  connect_bd_net -net sys_100m_clk [get_bd_pins axi_cpu_interconnect/ACLK] [get_bd_pins axi_cpu_interconnect/M00_ACLK] [get_bd_pins axi_cpu_interconnect/M01_ACLK] [get_bd_pins axi_cpu_interconnect/M02_ACLK] [get_bd_pins axi_cpu_interconnect/S00_ACLK] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_i2s_adi/DMA_REQ_RX_ACLK] [get_bd_pins axi_i2s_adi/DMA_REQ_TX_ACLK] [get_bd_pins axi_i2s_adi/S_AXI_ACLK] [get_bd_pins axi_iic_0/s_axi_aclk] [get_bd_pins sys_ps7/DMA0_ACLK] [get_bd_pins sys_ps7/DMA1_ACLK] [get_bd_pins sys_ps7/DMA2_ACLK] [get_bd_pins sys_ps7/FCLK_CLK0] [get_bd_pins sys_ps7/M_AXI_GP0_ACLK] [get_bd_pins sys_rstgen/slowest_sync_clk]
-  connect_bd_net -net sys_100m_resetn [get_bd_pins axi_cpu_interconnect/ARESETN] [get_bd_pins axi_cpu_interconnect/M00_ARESETN] [get_bd_pins axi_cpu_interconnect/M01_ARESETN] [get_bd_pins axi_cpu_interconnect/M02_ARESETN] [get_bd_pins axi_cpu_interconnect/S00_ARESETN] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_i2s_adi/DMA_REQ_RX_RSTN] [get_bd_pins axi_i2s_adi/DMA_REQ_TX_RSTN] [get_bd_pins axi_i2s_adi/S_AXI_ARESETN] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins sys_rstgen/peripheral_aresetn]
-  connect_bd_net -net sys_200m_clk [get_bd_pins sys_audio_clkgen/clk_in1] [get_bd_pins sys_ps7/FCLK_CLK1]
-  connect_bd_net -net sys_audio_clkgen_clk [get_bd_ports i2s_mclk] [get_bd_pins axi_i2s_adi/DATA_CLK_I] [get_bd_pins sys_audio_clkgen/clk_out1]
+  connect_bd_net -net sys_100m_clk [get_bd_pins axi_cpu_interconnect/ACLK] [get_bd_pins axi_cpu_interconnect/M00_ACLK] [get_bd_pins axi_cpu_interconnect/S00_ACLK] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins sys_ps7/FCLK_CLK0] [get_bd_pins sys_ps7/M_AXI_GP0_ACLK] [get_bd_pins sys_rstgen/slowest_sync_clk]
+  connect_bd_net -net sys_100m_resetn [get_bd_pins axi_cpu_interconnect/ARESETN] [get_bd_pins axi_cpu_interconnect/M00_ARESETN] [get_bd_pins axi_cpu_interconnect/S00_ARESETN] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins sys_rstgen/peripheral_aresetn]
   connect_bd_net -net sys_aux_reset [get_bd_pins sys_ps7/FCLK_RESET0_N] [get_bd_pins sys_rstgen/ext_reset_in]
-  connect_bd_net -net xlconcat_0_dout [get_bd_pins sys_ps7/IRQ_F2P] [get_bd_pins xlconcat_0/dout]
 
   # Create address segments
   create_bd_addr_seg -range 0x10000 -offset 0x41200000 [get_bd_addr_spaces sys_ps7/Data] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] SEG_axi_gpio_0_Reg
-  create_bd_addr_seg -range 0x10000 -offset 0x77600000 [get_bd_addr_spaces sys_ps7/Data] [get_bd_addr_segs axi_i2s_adi/S_AXI/reg0] SEG_axi_i2s_adi_reg0
-  create_bd_addr_seg -range 0x10000 -offset 0x41600000 [get_bd_addr_spaces sys_ps7/Data] [get_bd_addr_segs axi_iic_0/S_AXI/Reg] SEG_axi_iic_0_Reg
-  
+
+  # Perform GUI Layout
+  regenerate_bd_layout -layout_string {
+   guistr: "# # String gsaved with Nlview 6.5.5  2015-06-26 bk=1.3371 VDI=38 GEI=35 GUI=JA:1.8
+#  -string -flagsOSRD
+preplace port switches -pg 1 -y 130 -defaultsOSRD
+preplace port DDR -pg 1 -y 550 -defaultsOSRD
+preplace port leds -pg 1 -y 60 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 570 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 2 -y 70 -defaultsOSRD
+preplace inst sys_rstgen -pg 1 -lvl 1 -y 1100 -defaultsOSRD
+preplace inst sys_ps7 -pg 1 -lvl 1 -y 660 -defaultsOSRD
+preplace inst axi_cpu_interconnect -pg 1 -lvl 1 -y 270 -defaultsOSRD
+preplace netloc sys_100m_clk 1 0 2 10 130 470
+preplace netloc axi_cpu_interconnect_M00_AXI 1 1 1 460
+preplace netloc sys_aux_reset 1 0 2 30 790 450
+preplace netloc axi_gpio_0_GPIO2 1 2 1 850
+preplace netloc sys_ps7_ddr 1 1 2 480 550 NJ
+preplace netloc axi_gpio_0_GPIO 1 2 1 N
+preplace netloc sys_ps7_fixed_io 1 1 2 500 570 NJ
+preplace netloc axi_cpu_interconnect_s00_axi 1 0 2 30 150 450
+preplace netloc sys_100m_resetn 1 0 2 20 140 490
+levelinfo -pg 1 -10 250 740 900 -top 0 -bot 1300
+",
+}
 
   # Restore current instance
   current_bd_instance $oldCurInst

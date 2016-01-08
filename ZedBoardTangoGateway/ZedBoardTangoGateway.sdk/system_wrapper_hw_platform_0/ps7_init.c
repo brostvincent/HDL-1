@@ -372,14 +372,14 @@ unsigned long ps7_clock_init_data_3_0[] = {
     // .. .. SRCSEL = 0x0
     // .. .. ==> 0XF8000180[5:4] = 0x00000000U
     // .. ..     ==> MASK : 0x00000030U    VAL : 0x00000000U
-    // .. .. DIVISOR0 = 0x5
-    // .. .. ==> 0XF8000180[13:8] = 0x00000005U
-    // .. ..     ==> MASK : 0x00003F00U    VAL : 0x00000500U
+    // .. .. DIVISOR0 = 0x7
+    // .. .. ==> 0XF8000180[13:8] = 0x00000007U
+    // .. ..     ==> MASK : 0x00003F00U    VAL : 0x00000700U
     // .. .. DIVISOR1 = 0x1
     // .. .. ==> 0XF8000180[25:20] = 0x00000001U
     // .. ..     ==> MASK : 0x03F00000U    VAL : 0x00100000U
     // .. .. 
-    EMIT_MASKWRITE(0XF8000180, 0x03F03F30U ,0x00100500U),
+    EMIT_MASKWRITE(0XF8000180, 0x03F03F30U ,0x00100700U),
     // .. .. SRCSEL = 0x0
     // .. .. ==> 0XF8000190[5:4] = 0x00000000U
     // .. ..     ==> MASK : 0x00000030U    VAL : 0x00000000U
@@ -697,9 +697,9 @@ unsigned long ps7_ddr_init_data_3_0[] = {
     // .. .. reg_ddrc_burst_rdwr = 0x4
     // .. .. ==> 0XF8006034[3:0] = 0x00000004U
     // .. ..     ==> MASK : 0x0000000FU    VAL : 0x00000004U
-    // .. .. reg_ddrc_pre_cke_x1024 = 0x105
-    // .. .. ==> 0XF8006034[13:4] = 0x00000105U
-    // .. ..     ==> MASK : 0x00003FF0U    VAL : 0x00001050U
+    // .. .. reg_ddrc_pre_cke_x1024 = 0x16d
+    // .. .. ==> 0XF8006034[13:4] = 0x0000016DU
+    // .. ..     ==> MASK : 0x00003FF0U    VAL : 0x000016D0U
     // .. .. reg_ddrc_post_cke_x1024 = 0x1
     // .. .. ==> 0XF8006034[25:16] = 0x00000001U
     // .. ..     ==> MASK : 0x03FF0000U    VAL : 0x00010000U
@@ -707,7 +707,7 @@ unsigned long ps7_ddr_init_data_3_0[] = {
     // .. .. ==> 0XF8006034[28:28] = 0x00000000U
     // .. ..     ==> MASK : 0x10000000U    VAL : 0x00000000U
     // .. .. 
-    EMIT_MASKWRITE(0XF8006034, 0x13FF3FFFU ,0x00011054U),
+    EMIT_MASKWRITE(0XF8006034, 0x13FF3FFFU ,0x000116D4U),
     // .. .. reg_ddrc_force_low_pri_n = 0x0
     // .. .. ==> 0XF8006038[0:0] = 0x00000000U
     // .. ..     ==> MASK : 0x00000001U    VAL : 0x00000000U
@@ -4485,14 +4485,14 @@ unsigned long ps7_clock_init_data_2_0[] = {
     // .. .. SRCSEL = 0x0
     // .. .. ==> 0XF8000180[5:4] = 0x00000000U
     // .. ..     ==> MASK : 0x00000030U    VAL : 0x00000000U
-    // .. .. DIVISOR0 = 0x5
-    // .. .. ==> 0XF8000180[13:8] = 0x00000005U
-    // .. ..     ==> MASK : 0x00003F00U    VAL : 0x00000500U
+    // .. .. DIVISOR0 = 0x7
+    // .. .. ==> 0XF8000180[13:8] = 0x00000007U
+    // .. ..     ==> MASK : 0x00003F00U    VAL : 0x00000700U
     // .. .. DIVISOR1 = 0x1
     // .. .. ==> 0XF8000180[25:20] = 0x00000001U
     // .. ..     ==> MASK : 0x03F00000U    VAL : 0x00100000U
     // .. .. 
-    EMIT_MASKWRITE(0XF8000180, 0x03F03F30U ,0x00100500U),
+    EMIT_MASKWRITE(0XF8000180, 0x03F03F30U ,0x00100700U),
     // .. .. SRCSEL = 0x0
     // .. .. ==> 0XF8000190[5:4] = 0x00000000U
     // .. ..     ==> MASK : 0x00000030U    VAL : 0x00000000U
@@ -4834,9 +4834,9 @@ unsigned long ps7_ddr_init_data_2_0[] = {
     // .. .. reg_ddrc_burst_rdwr = 0x4
     // .. .. ==> 0XF8006034[3:0] = 0x00000004U
     // .. ..     ==> MASK : 0x0000000FU    VAL : 0x00000004U
-    // .. .. reg_ddrc_pre_cke_x1024 = 0x105
-    // .. .. ==> 0XF8006034[13:4] = 0x00000105U
-    // .. ..     ==> MASK : 0x00003FF0U    VAL : 0x00001050U
+    // .. .. reg_ddrc_pre_cke_x1024 = 0x16d
+    // .. .. ==> 0XF8006034[13:4] = 0x0000016DU
+    // .. ..     ==> MASK : 0x00003FF0U    VAL : 0x000016D0U
     // .. .. reg_ddrc_post_cke_x1024 = 0x1
     // .. .. ==> 0XF8006034[25:16] = 0x00000001U
     // .. ..     ==> MASK : 0x03FF0000U    VAL : 0x00010000U
@@ -4844,7 +4844,7 @@ unsigned long ps7_ddr_init_data_2_0[] = {
     // .. .. ==> 0XF8006034[28:28] = 0x00000000U
     // .. ..     ==> MASK : 0x10000000U    VAL : 0x00000000U
     // .. .. 
-    EMIT_MASKWRITE(0XF8006034, 0x13FF3FFFU ,0x00011054U),
+    EMIT_MASKWRITE(0XF8006034, 0x13FF3FFFU ,0x000116D4U),
     // .. .. reg_ddrc_force_low_pri_n = 0x0
     // .. .. ==> 0XF8006038[0:0] = 0x00000000U
     // .. ..     ==> MASK : 0x00000001U    VAL : 0x00000000U
@@ -8751,14 +8751,14 @@ unsigned long ps7_clock_init_data_1_0[] = {
     // .. .. SRCSEL = 0x0
     // .. .. ==> 0XF8000180[5:4] = 0x00000000U
     // .. ..     ==> MASK : 0x00000030U    VAL : 0x00000000U
-    // .. .. DIVISOR0 = 0x5
-    // .. .. ==> 0XF8000180[13:8] = 0x00000005U
-    // .. ..     ==> MASK : 0x00003F00U    VAL : 0x00000500U
+    // .. .. DIVISOR0 = 0x7
+    // .. .. ==> 0XF8000180[13:8] = 0x00000007U
+    // .. ..     ==> MASK : 0x00003F00U    VAL : 0x00000700U
     // .. .. DIVISOR1 = 0x1
     // .. .. ==> 0XF8000180[25:20] = 0x00000001U
     // .. ..     ==> MASK : 0x03F00000U    VAL : 0x00100000U
     // .. .. 
-    EMIT_MASKWRITE(0XF8000180, 0x03F03F30U ,0x00100500U),
+    EMIT_MASKWRITE(0XF8000180, 0x03F03F30U ,0x00100700U),
     // .. .. SRCSEL = 0x0
     // .. .. ==> 0XF8000190[5:4] = 0x00000000U
     // .. ..     ==> MASK : 0x00000030U    VAL : 0x00000000U
@@ -9100,9 +9100,9 @@ unsigned long ps7_ddr_init_data_1_0[] = {
     // .. .. reg_ddrc_burst_rdwr = 0x4
     // .. .. ==> 0XF8006034[3:0] = 0x00000004U
     // .. ..     ==> MASK : 0x0000000FU    VAL : 0x00000004U
-    // .. .. reg_ddrc_pre_cke_x1024 = 0x105
-    // .. .. ==> 0XF8006034[13:4] = 0x00000105U
-    // .. ..     ==> MASK : 0x00003FF0U    VAL : 0x00001050U
+    // .. .. reg_ddrc_pre_cke_x1024 = 0x16d
+    // .. .. ==> 0XF8006034[13:4] = 0x0000016DU
+    // .. ..     ==> MASK : 0x00003FF0U    VAL : 0x000016D0U
     // .. .. reg_ddrc_post_cke_x1024 = 0x1
     // .. .. ==> 0XF8006034[25:16] = 0x00000001U
     // .. ..     ==> MASK : 0x03FF0000U    VAL : 0x00010000U
@@ -9110,7 +9110,7 @@ unsigned long ps7_ddr_init_data_1_0[] = {
     // .. .. ==> 0XF8006034[28:28] = 0x00000000U
     // .. ..     ==> MASK : 0x10000000U    VAL : 0x00000000U
     // .. .. 
-    EMIT_MASKWRITE(0XF8006034, 0x13FF3FFFU ,0x00011054U),
+    EMIT_MASKWRITE(0XF8006034, 0x13FF3FFFU ,0x000116D4U),
     // .. .. reg_ddrc_force_low_pri_n = 0x0
     // .. .. ==> 0XF8006038[0:0] = 0x00000000U
     // .. ..     ==> MASK : 0x00000001U    VAL : 0x00000000U
@@ -12645,7 +12645,7 @@ ps7GetSiliconVersion () {
 }
 
 void mask_write (unsigned long add , unsigned long  mask, unsigned long val ) {
-        unsigned long *addr = (unsigned long*) add;
+        volatile unsigned long *addr = (volatile unsigned long*) add;
         *addr = ( val & mask ) | ( *addr & ~mask);
         //xil_printf("MaskWrite : 0x%x--> 0x%x \n \r" ,add, *addr);
 }
@@ -12665,7 +12665,7 @@ int mask_poll(unsigned long add , unsigned long mask ) {
 }
 
 unsigned long mask_read(unsigned long add , unsigned long mask ) {
-        unsigned long *addr = (unsigned long*) add;
+        volatile unsigned long *addr = (volatile unsigned long*) add;
         unsigned long val = (*addr & mask);
         //xil_printf("MaskRead : 0x%x --> 0x%x \n \r" , add, val);
         return val;
