@@ -1,0 +1,189 @@
+
+
+================================================================
+== Vivado HLS Report for 'image_filter'
+================================================================
+* Date:           Thu Jan  7 10:54:17 2016
+
+* Version:        2015.4 (Build 1412921 on Wed Nov 18 09:58:55 AM 2015)
+* Project:        hls_ip
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      8.64|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+---------+-----+---------+----------+
+    |    Latency    |    Interval   | Pipeline |
+    | min |   max   | min |   max   |   Type   |
+    +-----+---------+-----+---------+----------+
+    |  199|  2091516|  193|  2091510| dataflow |
+    +-----+---------+-----+---------+----------+
+
+    + Detail: 
+        * Instance: 
+        +--------------------------------------+---------------------------+-----+---------+-----+---------+---------+
+        |                                      |                           |    Latency    |    Interval   | Pipeline|
+        |               Instance               |           Module          | min |   max   | min |   max   |   Type  |
+        +--------------------------------------+---------------------------+-----+---------+-----+---------+---------+
+        |grp_image_filter_AXIvideo2Mat_fu_128  |image_filter_AXIvideo2Mat  |    3|  2079003|    3|  2079003|   none  |
+        |grp_image_filter_Sobel_fu_112         |image_filter_Sobel         |  192|  2091509|  192|  2091509|   none  |
+        |grp_image_filter_Sobel_1_fu_120       |image_filter_Sobel_1       |  192|  2091509|  192|  2091509|   none  |
+        |grp_image_filter_Mat2AXIvideo_fu_149  |image_filter_Mat2AXIvideo  |    1|  2076841|    1|  2076841|   none  |
+        +--------------------------------------+---------------------------+-----+---------+-----+---------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|       0|      1|
+|FIFO             |        0|      -|      15|    132|
+|Instance         |       24|     24|    2554|   2720|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|      -|
+|Register         |        -|      -|       5|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |       24|     24|    2574|   2853|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        8|     10|       2|      5|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +------------------------------+---------------------------+---------+-------+------+------+
+    |           Instance           |           Module          | BRAM_18K| DSP48E|  FF  |  LUT |
+    +------------------------------+---------------------------+---------+-------+------+------+
+    |image_filter_AXIvideo2Mat_U0  |image_filter_AXIvideo2Mat  |        0|      0|   179|   195|
+    |image_filter_Mat2AXIvideo_U0  |image_filter_Mat2AXIvideo  |        0|      0|    43|    71|
+    |image_filter_Sobel_U0         |image_filter_Sobel         |       12|     12|  1166|  1227|
+    |image_filter_Sobel_1_U0       |image_filter_Sobel_1       |       12|     12|  1166|  1227|
+    +------------------------------+---------------------------+---------+-------+------+------+
+    |Total                         |                           |       24|     24|  2554|  2720|
+    +------------------------------+---------------------------+---------+-------+------+------+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +-------------------------+---------+---+----+------+-----+---------+
+    |           Name          | BRAM_18K| FF| LUT| Depth| Bits| Size:D*B|
+    +-------------------------+---------+---+----+------+-----+---------+
+    |img_0_data_stream_0_V_U  |        0|  5|  44|     1|   32|       32|
+    |img_1_data_stream_0_V_U  |        0|  5|  44|     1|   32|       32|
+    |img_2_data_stream_0_V_U  |        0|  5|  44|     1|   32|       32|
+    +-------------------------+---------+---+----+------+-----+---------+
+    |Total                    |        0| 15| 132|     3|   96|       96|
+    +-------------------------+---------+---+----+------+-----+---------+
+
+    * Expression: 
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+    |             Variable Name             | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+    |image_filter_AXIvideo2Mat_U0_ap_start  |    and   |      0|  0|   1|           1|           0|
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+    |Total                                  |          |      0|  0|   1|           1|           0|
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    +----------------------------------------------+---+----+-----+-----------+
+    |                     Name                     | FF| LUT| Bits| Const Bits|
+    +----------------------------------------------+---+----+-----+-----------+
+    |ap_CS                                         |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_AXIvideo2Mat_U0  |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_Mat2AXIvideo_U0  |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_Sobel_1_U0       |  1|   0|    1|          0|
+    |ap_reg_procdone_image_filter_Sobel_U0         |  1|   0|    1|          0|
+    +----------------------------------------------+---+----+-----+-----------+
+    |Total                                         |  5|   0|    5|          0|
+    +----------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+-----------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  |  Source Object  |    C Type    |
++------------------------+-----+-----+------------+-----------------+--------------+
+|input_V_data_V_dout     |  in |   32|   ap_fifo  |  input_V_data_V |    pointer   |
+|input_V_data_V_empty_n  |  in |    1|   ap_fifo  |  input_V_data_V |    pointer   |
+|input_V_data_V_read     | out |    1|   ap_fifo  |  input_V_data_V |    pointer   |
+|input_V_keep_V_dout     |  in |    4|   ap_fifo  |  input_V_keep_V |    pointer   |
+|input_V_keep_V_empty_n  |  in |    1|   ap_fifo  |  input_V_keep_V |    pointer   |
+|input_V_keep_V_read     | out |    1|   ap_fifo  |  input_V_keep_V |    pointer   |
+|input_V_strb_V_dout     |  in |    4|   ap_fifo  |  input_V_strb_V |    pointer   |
+|input_V_strb_V_empty_n  |  in |    1|   ap_fifo  |  input_V_strb_V |    pointer   |
+|input_V_strb_V_read     | out |    1|   ap_fifo  |  input_V_strb_V |    pointer   |
+|input_V_user_V_dout     |  in |    1|   ap_fifo  |  input_V_user_V |    pointer   |
+|input_V_user_V_empty_n  |  in |    1|   ap_fifo  |  input_V_user_V |    pointer   |
+|input_V_user_V_read     | out |    1|   ap_fifo  |  input_V_user_V |    pointer   |
+|input_V_last_V_dout     |  in |    1|   ap_fifo  |  input_V_last_V |    pointer   |
+|input_V_last_V_empty_n  |  in |    1|   ap_fifo  |  input_V_last_V |    pointer   |
+|input_V_last_V_read     | out |    1|   ap_fifo  |  input_V_last_V |    pointer   |
+|input_V_id_V_dout       |  in |    1|   ap_fifo  |   input_V_id_V  |    pointer   |
+|input_V_id_V_empty_n    |  in |    1|   ap_fifo  |   input_V_id_V  |    pointer   |
+|input_V_id_V_read       | out |    1|   ap_fifo  |   input_V_id_V  |    pointer   |
+|input_V_dest_V_dout     |  in |    1|   ap_fifo  |  input_V_dest_V |    pointer   |
+|input_V_dest_V_empty_n  |  in |    1|   ap_fifo  |  input_V_dest_V |    pointer   |
+|input_V_dest_V_read     | out |    1|   ap_fifo  |  input_V_dest_V |    pointer   |
+|output_V_data_V_din     | out |   32|   ap_fifo  | output_V_data_V |    pointer   |
+|output_V_data_V_full_n  |  in |    1|   ap_fifo  | output_V_data_V |    pointer   |
+|output_V_data_V_write   | out |    1|   ap_fifo  | output_V_data_V |    pointer   |
+|output_V_keep_V_din     | out |    4|   ap_fifo  | output_V_keep_V |    pointer   |
+|output_V_keep_V_full_n  |  in |    1|   ap_fifo  | output_V_keep_V |    pointer   |
+|output_V_keep_V_write   | out |    1|   ap_fifo  | output_V_keep_V |    pointer   |
+|output_V_strb_V_din     | out |    4|   ap_fifo  | output_V_strb_V |    pointer   |
+|output_V_strb_V_full_n  |  in |    1|   ap_fifo  | output_V_strb_V |    pointer   |
+|output_V_strb_V_write   | out |    1|   ap_fifo  | output_V_strb_V |    pointer   |
+|output_V_user_V_din     | out |    1|   ap_fifo  | output_V_user_V |    pointer   |
+|output_V_user_V_full_n  |  in |    1|   ap_fifo  | output_V_user_V |    pointer   |
+|output_V_user_V_write   | out |    1|   ap_fifo  | output_V_user_V |    pointer   |
+|output_V_last_V_din     | out |    1|   ap_fifo  | output_V_last_V |    pointer   |
+|output_V_last_V_full_n  |  in |    1|   ap_fifo  | output_V_last_V |    pointer   |
+|output_V_last_V_write   | out |    1|   ap_fifo  | output_V_last_V |    pointer   |
+|output_V_id_V_din       | out |    1|   ap_fifo  |  output_V_id_V  |    pointer   |
+|output_V_id_V_full_n    |  in |    1|   ap_fifo  |  output_V_id_V  |    pointer   |
+|output_V_id_V_write     | out |    1|   ap_fifo  |  output_V_id_V  |    pointer   |
+|output_V_dest_V_din     | out |    1|   ap_fifo  | output_V_dest_V |    pointer   |
+|output_V_dest_V_full_n  |  in |    1|   ap_fifo  | output_V_dest_V |    pointer   |
+|output_V_dest_V_write   | out |    1|   ap_fifo  | output_V_dest_V |    pointer   |
+|rows                    |  in |   32|  ap_stable |       rows      |    scalar    |
+|cols                    |  in |   32|  ap_stable |       cols      |    scalar    |
+|ap_clk                  |  in |    1| ap_ctrl_hs |   image_filter  | return value |
+|ap_rst                  |  in |    1| ap_ctrl_hs |   image_filter  | return value |
+|ap_start                |  in |    1| ap_ctrl_hs |   image_filter  | return value |
+|ap_done                 | out |    1| ap_ctrl_hs |   image_filter  | return value |
+|ap_idle                 | out |    1| ap_ctrl_hs |   image_filter  | return value |
+|ap_ready                | out |    1| ap_ctrl_hs |   image_filter  | return value |
++------------------------+-----+-----+------------+-----------------+--------------+
+
