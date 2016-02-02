@@ -3,7 +3,7 @@
   <spirit:vendor>rp</spirit:vendor>
   <spirit:library>OpenCV</spirit:library>
   <spirit:name>image_filter</spirit:name>
-  <spirit:version>1.1</spirit:version>
+  <spirit:version>1.3</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>S_AXI_CONTROL_BUS</spirit:name>
@@ -1358,35 +1358,35 @@
     <spirit:fileSet>
       <spirit:name>xilinx_softwaredriver_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>drivers/image_filter_top_v1_1/data/image_filter_top.tcl</spirit:name>
+        <spirit:name>drivers/image_filter_top_v1_3/data/image_filter_top.tcl</spirit:name>
         <spirit:userFileType>driver_tcl</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/image_filter_top_v1_1/data/image_filter_top.mdd</spirit:name>
+        <spirit:name>drivers/image_filter_top_v1_3/data/image_filter_top.mdd</spirit:name>
         <spirit:userFileType>driver_mdd</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/image_filter_top_v1_1/src/ximage_filter.h</spirit:name>
+        <spirit:name>drivers/image_filter_top_v1_3/src/ximage_filter.h</spirit:name>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/image_filter_top_v1_1/src/Makefile</spirit:name>
+        <spirit:name>drivers/image_filter_top_v1_3/src/Makefile</spirit:name>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/image_filter_top_v1_1/src/ximage_filter_hw.h</spirit:name>
+        <spirit:name>drivers/image_filter_top_v1_3/src/ximage_filter_hw.h</spirit:name>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/image_filter_top_v1_1/src/ximage_filter_sinit.c</spirit:name>
+        <spirit:name>drivers/image_filter_top_v1_3/src/ximage_filter_sinit.c</spirit:name>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/image_filter_top_v1_1/src/ximage_filter.c</spirit:name>
+        <spirit:name>drivers/image_filter_top_v1_3/src/ximage_filter.c</spirit:name>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/image_filter_top_v1_1/src/ximage_filter_linux.c</spirit:name>
+        <spirit:name>drivers/image_filter_top_v1_3/src/ximage_filter_linux.c</spirit:name>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1414,7 +1414,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/image_filter_v1_1.tcl</spirit:name>
+        <spirit:name>xgui/image_filter_v1_3.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_f62b7780</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
@@ -1438,7 +1438,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">image_filter_v1_1</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">image_filter_v1_3</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>
@@ -1450,8 +1450,8 @@
         <xilinx:taxonomy>/VIVADO_HLS_IP</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>opencvFilter</xilinx:displayName>
-      <xilinx:coreRevision>1601071055</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2016-01-07T09:55:24Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>2</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2016-01-19T20:25:45Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2015.4</xilinx:xilinxVersion>

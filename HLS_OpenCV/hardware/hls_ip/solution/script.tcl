@@ -14,4 +14,4 @@ create_clock -period 10 -name default
 #csim_design
 csynth_design
 #cosim_design
-export_design -format ip_catalog -description "OpenCV image processing core" -vendor "rp" -library "OpenCV" -version "1.1" -display_name "opencvFilter"
+export_design -format ip_catalog -description "OpenCV image processing core" -vendor "rp" -library "OpenCV" -version "1.3.2" -display_name "opencvFilter"

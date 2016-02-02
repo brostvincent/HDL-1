@@ -6,4 +6,4 @@
 # ==============================================================
 
 
-/opt/Xilinx/Vivado_HLS/2015.4/../../Vivado/2015.4/bin/vivado  -notrace -mode batch -source ipi_example.tcl -tclargs xc7z020clg484-1 ../rp_OpenCV_image_filter_1_1.zip
+/opt/Xilinx/Vivado_HLS/2015.4/../../Vivado/2015.4/bin/vivado  -notrace -mode batch -source ipi_example.tcl -tclargs xc7z020clg484-1 ../rp_OpenCV_image_filter_1_3.zip

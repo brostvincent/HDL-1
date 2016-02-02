@@ -9,7 +9,7 @@
         <schedule model="image_filter"/>
     </config>
     <UIConfigurations>
-        <UIAutosynConf hideTrivialOp="true" isBasedOnBoard="false" isSolutionDirty="false" isStopAskAgain="false" showDetailDesignViewer="false">
+        <UIAutosynConf hideTrivialOp="true" isBasedOnBoard="false" isSolutionDirty="false" isStopAskAgain="true" showDetailDesignViewer="false">
             <Platform>xilinx/zynq/zynq</Platform>
             <Platform>xilinx/zynq/zynq_fpv6</Platform>
             <customLibs/>
@@ -41,7 +41,7 @@
         </UIAutoSimConf>
     </UIConfigurations>
     <ExportDesign askAgain="true" evaluate="false" formatName="ip_catalog" rtl="verilog">
-        <Format description="OpenCV image processing core" display_name="opencvFilter" formatName="ip_catalog" library="OpenCV" vendor="rp" version="1.1" driver_input_dir="" taxonomy=""/>
+        <Format description="OpenCV image processing core" display_name="opencvFilter" formatName="ip_catalog" library="OpenCV" vendor="rp" version="1.3.2" driver_input_dir="" taxonomy=""/>
         <Format formatName="sysgen"/>
         <Format formatName="sysgen_ise"/>
         <Format formatName="syn_dcp"/>

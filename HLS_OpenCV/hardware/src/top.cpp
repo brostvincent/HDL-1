@@ -20,5 +20,6 @@
      hls::AXIvideo2Mat(input, img_0);
      hls::Sobel<1,0,3>(img_0, img_1);
      hls::Sobel<0,1,3>(img_1, img_2);
+     //hls::CornerHarris<5,3>(img_0,img_2,0.05);
      hls::Mat2AXIvideo(img_2, output);
  }
